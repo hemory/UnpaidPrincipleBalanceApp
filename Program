@@ -1,0 +1,57 @@
+using System;
+
+namespace Week1MortgageApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const double amountDue = 599.55;
+
+            Console.WriteLine("Welcome to the Principle Unpaid Balance Application.");
+
+            Console.WriteLine("What is your name?");
+            string name = Console.ReadLine();
+
+            Console.WriteLine($"Hey {name}, what is your current principle loan balance?");
+            double principleLoanBalance = Convert.ToDouble(Console.ReadLine());
+
+            //Get annual interest rate
+            Console.WriteLine("What is your annual interest rate?");
+            double annualInterestRate = Convert.ToDouble(Console.ReadLine());
+
+            double annualInterestRateConvertedToFraction = annualInterestRate / 100;
+
+            double annualInterestAmount = principleLoanBalance * annualInterestRateConvertedToFraction;
+
+            Console.WriteLine($"Hey {name} based on what you entered your annual interest amount is going to be {annualInterestAmount}");
+
+            double annualInterestDue = annualInterestAmount / 12;
+
+            Console.WriteLine($"Your annual interest due is {annualInterestDue} dollars");
+
+
+            //Calculating actual payment towards principle
+            double actualPrinciplePayment = amountDue - annualInterestDue;
+
+            Console.WriteLine($"Your principle payment minus the interest charged is {actualPrinciplePayment}");
+
+            double newPrincipleBalance = principleLoanBalance - actualPrinciplePayment;
+
+            Console.WriteLine($"{name} after your payment, you now owe {newPrincipleBalance} dollars");
+
+            Console.ReadLine();
+
+
+            //Resource https://www.thebalance.com/how-to-figure-mortgage-interest-1798434
+
+
+
+
+
+
+
+
+        }
+    }
+}
